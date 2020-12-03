@@ -4,6 +4,7 @@ import com.edu.movie.data.source.MovieDataSource
 import com.edu.movie.data.source.remote.fetchjson.GetJsonFromUrl
 import com.edu.movie.utils.Constant
 import com.edu.movie.utils.TrendingMoviesType
+import com.edu.movie.utils.TypeEndPointMovieDetails
 import com.edu.movie.utils.TypeModel
 
 class MovieRemoteDataSource : MovieDataSource.Remote {
@@ -28,6 +29,32 @@ class MovieRemoteDataSource : MovieDataSource.Remote {
         val stringUrl =
             Constant.BASE_URL + TRENDING_TOP + MEDIA_TYPE + TIME_WINDOW + endPointParams
         GetJsonFromUrl(TypeModel.MOVIE_ITEM_SLIDER, listener).execute(stringUrl)
+    }
+
+    override fun <T> getMovieDetails(
+        idMovie: Int,
+        typeEndPoint: TypeEndPointMovieDetails,
+        listener: OnFetchDataJsonListener<T>
+    ) {
+        val stringUrl =
+            Constant.BASE_URL + MEDIA_TYPE + idMovie + typeEndPoint.path + endPointParams
+        when (typeEndPoint) {
+            TypeEndPointMovieDetails.MOVIE_DETAILS -> GetJsonFromUrl(
+                TypeModel.MOVIE_DETAILS,
+                listener
+            ).execute(stringUrl)
+            TypeEndPointMovieDetails.CASTS -> GetJsonFromUrl(TypeModel.CAST, listener).execute(
+                stringUrl
+            )
+            TypeEndPointMovieDetails.VIDEO_YOUTUBE -> GetJsonFromUrl(
+                TypeModel.VIDEO_YOUTUBE,
+                listener
+            ).execute(stringUrl)
+            TypeEndPointMovieDetails.RECOMMENDATIONS -> GetJsonFromUrl(
+                TypeModel.MOVIE_ITEM_TRENDING,
+                listener
+            ).execute(stringUrl)
+        }
     }
 
     companion object {

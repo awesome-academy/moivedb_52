@@ -46,6 +46,25 @@ class ParseDataWithJson {
                         typeModel
                     )
                 }
+                TypeModel.MOVIE_DETAILS -> {
+                    parseJsonToObject(
+                        JSONObject(jsonString),
+                        typeModel
+                    )
+                }
+                TypeModel.COMPANY -> {
+                    parseJsonToList(JSONArray(jsonString), typeModel)
+                }
+                TypeModel.GENRES -> {
+                    parseJsonToList(JSONArray(jsonString), typeModel)
+                }
+                TypeModel.VIDEO_YOUTUBE -> {
+                    null
+                }
+                TypeModel.CAST -> {
+                    null
+                }
+
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -62,6 +81,16 @@ class ParseDataWithJson {
             TypeModel.MOVIE_ITEM_SLIDER -> {
                 return parseJsonToModel.parseJsonToMovieItemSlider(jsonObject)
             }
+            TypeModel.MOVIE_DETAILS -> {
+                return parseJsonToModel.parseJsonToMovieDetails(jsonObject)
+            }
+            TypeModel.GENRES -> {
+                return parseJsonToModel.parseJsonToGenres(jsonObject)
+            }
+            TypeModel.COMPANY -> {
+                return parseJsonToModel.parseJsonToCompany(jsonObject)
+            }
+            else -> return null
         }
     }
 
@@ -72,6 +101,7 @@ class ParseDataWithJson {
             val jsonObject = jsonArray?.getJSONObject(i)
             data.add(parseJsonToObject(jsonObject, typeModel))
         }
+
         return data.filterNotNull()
     }
 

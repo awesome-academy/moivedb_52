@@ -17,11 +17,17 @@
         <item name="android:textViewStyle">@style/Theme.Movie.TextView</item>
     </style>
 
+    <!-- Customize ProgressBar -->
+    <style name="ProgressBarStyle">
+        <item name="colorAccent">@color/orange_900</item>
+    </style>
+
     <!-- Customize TextView -->
     <style name="Theme.Movie.TextView" parent="android:Widget.TextView">
         <item name="android:textColor">@android:color/white</item>
         <item name="fontFamily">@font/roboto</item>
     </style>
+
     <!-- Customize them BottomNavigation -->
     <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
