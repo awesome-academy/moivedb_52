@@ -33,11 +33,11 @@ class MovieDetailsFragment : Fragment(), MovieDetailsContact.View {
         initPresenter()
     }
 
-    private fun initPresenter(){
-            MovieDetailsPresenter(MovieRepository.instance).apply {
-                setView(this@MovieDetailsFragment)
-                idMovieDetails?.let { getMovieDetails(it) }
-            }
+    private fun initPresenter() {
+        MovieDetailsPresenter(MovieRepository.instance).apply {
+            setView(this@MovieDetailsFragment)
+            idMovieDetails?.let { getMovieDetails(it) }
+        }
     }
 
     companion object {
@@ -56,6 +56,5 @@ class MovieDetailsFragment : Fragment(), MovieDetailsContact.View {
 
     override fun onError(exception: Exception?) {
         Toast.makeText(context, exception?.message, Toast.LENGTH_SHORT).show()
-
     }
 }

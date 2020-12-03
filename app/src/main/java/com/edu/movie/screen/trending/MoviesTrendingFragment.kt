@@ -129,7 +129,7 @@ class MoviesTrendingFragment : Fragment(), ViewContactTrending.View {
     companion object {
         private const val ARGUMENT_TRENDING = "ARGUMENT_TRENDING"
         private const val DO_SOME_THING = -1
-        private const val VISIBLE_THRESHOLD = 2
+        private const val VISIBLE_THRESHOLD = 5
 
         @JvmStatic
         fun newInstance(param: TrendingMoviesType) = MoviesTrendingFragment().apply {

@@ -27,6 +27,5 @@ interface MovieDataSource {
             typeEndPoint: TypeEndPointMovieDetails,
             listener: OnFetchDataJsonListener<T>
         )
-
     }
 }

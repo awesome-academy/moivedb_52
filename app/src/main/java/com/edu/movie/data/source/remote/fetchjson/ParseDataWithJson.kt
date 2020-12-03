@@ -58,13 +58,7 @@ class ParseDataWithJson {
                 TypeModel.GENRES -> {
                     parseJsonToList(JSONArray(jsonString), typeModel)
                 }
-                TypeModel.VIDEO_YOUTUBE -> {
-                    null
-                }
-                TypeModel.CAST -> {
-                    null
-                }
-
+                else -> null
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -101,7 +95,6 @@ class ParseDataWithJson {
             val jsonObject = jsonArray?.getJSONObject(i)
             data.add(parseJsonToObject(jsonObject, typeModel))
         }
-
         return data.filterNotNull()
     }
 
