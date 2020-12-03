@@ -1,6 +1,7 @@
 package com.edu.movie.data.source.repository
 
 import com.edu.movie.data.model.MovieDetails
+import com.edu.movie.data.model.ItemMovieSlider
 import com.edu.movie.data.model.MovieItem
 import com.edu.movie.data.source.MovieDataSource
 import com.edu.movie.data.source.local.MovieLocalDataSource
@@ -29,7 +30,7 @@ class MovieRepository private constructor(
         remote.getDataTrending(page, trendingType, listener)
     }
 
-    fun getListMovieSlider(listener: OnFetchDataJsonListener<MutableList<MovieItem>>) {
+    fun getListMovieSlider(listener: OnFetchDataJsonListener<MutableList<ItemMovieSlider>>) {
         remote.getDataSlider(listener)
     }
 

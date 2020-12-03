@@ -1,5 +1,6 @@
 package com.edu.movie.screen.home
 
+import com.edu.movie.data.model.ItemMovieSlider
 import com.edu.movie.data.model.MovieItem
 import com.edu.movie.data.source.remote.OnFetchDataJsonListener
 import com.edu.movie.data.source.repository.MovieRepository
@@ -42,8 +43,9 @@ class HomePresenter(private val repository: MovieRepository) : BasePresenter<Vie
     }
 
     private fun getSliderMovie() {
-        repository.getListMovieSlider(object : OnFetchDataJsonListener<MutableList<MovieItem>> {
-            override fun onSuccess(data: MutableList<MovieItem>) {
+        repository.getListMovieSlider(object :
+            OnFetchDataJsonListener<MutableList<ItemMovieSlider>> {
+            override fun onSuccess(data: MutableList<ItemMovieSlider>) {
                 view?.getImageSliderSuccess(data)
             }
 

@@ -11,7 +11,9 @@ import kotlinx.android.synthetic.main.item_movie_horizontal.view.*
 
 class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    fun binData(movies: MovieItem) {
+    private var onItemClickListener: ((Int) -> Unit)? = null
+
+    fun bindData(movies: MovieItem) {
         itemView.apply {
             movies.rate?.let {
                 textRate.text =
@@ -23,5 +25,12 @@ class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 Constant.BASE_URL_IMAGE + movies.imageUrl
             )
         }
+        itemView.setOnClickListener {
+            movies.id?.let { it -> onItemClickListener?.invoke(it) }
+        }
+    }
+
+    fun registerItemClickListener(onItemClickListener: ((Int) -> Unit)?) {
+        this.onItemClickListener = onItemClickListener
     }
 }

@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.edu.movie.R
 import com.edu.movie.data.model.MovieItem
-import com.edu.movie.screen.commonView.movieItem.adapter.MovieViewHolder
 
 class MoviesHorizontalAdapter : RecyclerView.Adapter<MovieViewHolder>() {
 
     private val movies: MutableList<MovieItem> = mutableListOf()
+    private var onItemClickListener: ((Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(
@@ -19,7 +19,10 @@ class MoviesHorizontalAdapter : RecyclerView.Adapter<MovieViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.binData(movies[position])
+        holder.apply {
+            registerItemClickListener(onItemClickListener)
+            bindData(movies[position])
+        }
     }
 
     override fun getItemCount() = movies.size
@@ -27,6 +30,11 @@ class MoviesHorizontalAdapter : RecyclerView.Adapter<MovieViewHolder>() {
     fun registerData(movies: MutableList<MovieItem>) {
         this.movies.clear()
         this.movies.addAll(movies)
+        notifyDataSetChanged()
+    }
+
+    fun registerOnItemClickListener(clickListener: (Int) -> Unit) {
+        onItemClickListener = clickListener
         notifyDataSetChanged()
     }
 }

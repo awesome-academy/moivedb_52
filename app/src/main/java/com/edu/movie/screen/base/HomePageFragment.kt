@@ -79,6 +79,12 @@ class HomePageFragment private constructor() : Fragment() {
 
             override fun onPageSelected(position: Int) {
                 bottomNavigation.menu.getItem(position).isChecked = true
+                when (position) {
+                    MenuItem.HOME.ordinal -> textHeader.text = getText((R.string.movie))
+                    MenuItem.TRENDING.ordinal -> textHeader.text = getText((R.string.trending))
+                    MenuItem.GENRES.ordinal -> textHeader.text = getText((R.string.genres))
+                    MenuItem.FAVORITE.ordinal -> textHeader.text = getText((R.string.favorite))
+                }
             }
 
             override fun onPageScrollStateChanged(state: Int) {
