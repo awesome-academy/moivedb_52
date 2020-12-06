@@ -73,6 +73,14 @@ class MovieRepository private constructor(
         remote.getMoviesByIdGenre(id, page, listener)
     }
 
+    fun getMoviesBySearch(
+        content: String,
+        page: Int,
+        listener: OnFetchDataJsonListener<List<MovieDetails>>
+    ) {
+        remote.getMoviesSearch(content, page, listener)
+    }
+
     fun getMoviesByCast(
         idCast: Int,
         page: Int,

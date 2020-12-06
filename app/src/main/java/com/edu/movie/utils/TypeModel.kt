@@ -8,5 +8,6 @@ enum class TypeModel {
     VIDEO_YOUTUBE,
     GENRES_DETAIL_MOVIE,
     COMPANY,
-    GENRES
+    GENRES,
+    SEARCH_RESULT
 }

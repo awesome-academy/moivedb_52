@@ -51,6 +51,8 @@ class ParseJsonToModel {
                 getString(MoviesDetailsEntry.TITLE),
                 if (getString(MoviesDetailsEntry.IMAGE_URL) == Constant.NULL_STRING) null
                 else getString(MoviesDetailsEntry.IMAGE_URL),
+                if (getString(MoviesDetailsEntry.IMAGE_POSTER_URL) == Constant.NULL_STRING) null
+                else getString(MoviesDetailsEntry.IMAGE_POSTER_URL),
                 getDouble(MoviesDetailsEntry.RATE),
                 countryProduction,
                 getString(MoviesDetailsEntry.DESCRIPTION),
@@ -97,6 +99,30 @@ class ParseJsonToModel {
                 getString(CompanyEntry.NAME),
                 if (getString(CompanyEntry.LOGO_URL) == Constant.NULL_STRING) null
                 else getString(CompanyEntry.LOGO_URL)
+            )
+        }
+
+    @Throws(Exception::class)
+    fun parseJsonToMovieForSearch(jsonObject: JSONObject?): MovieDetails? =
+        jsonObject?.run {
+            val genresId =
+                getJSONArray(GenresEntry.LIST_GENRES_SEARCH)
+            val genres = mutableListOf<Genres>()
+            for (i in 0 until genresId.length()) {
+                genres.add(Genres(genresId[i].toString().toInt(), null))
+            }
+            MovieDetails(
+                getInt(MoviesDetailsEntry.ID),
+                getString(MoviesDetailsEntry.TITLE),
+                if (getString(MoviesDetailsEntry.IMAGE_URL) == Constant.NULL_STRING) null
+                else getString(MoviesDetailsEntry.IMAGE_URL),
+                if (getString(MoviesDetailsEntry.IMAGE_POSTER_URL) == Constant.NULL_STRING) null
+                else getString(MoviesDetailsEntry.IMAGE_POSTER_URL),
+                getDouble(MoviesDetailsEntry.RATE),
+                null,
+                getString(MoviesDetailsEntry.DESCRIPTION),
+                genres,
+                null
             )
         }
 }

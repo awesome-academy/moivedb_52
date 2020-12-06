@@ -1,4 +1,4 @@
-package com.edu.movie.screen.search.adapter
+package com.edu.movie.screen.search.filter.adapter
 
 import android.view.LayoutInflater
 import android.view.View
