@@ -10,6 +10,8 @@ object Constant {
     const val BASE_LANGUAGE = "&language=en-US"
     const val BASE_API_KEY = "?api_key=" + BuildConfig.API_KEY
     const val BASE_DISCOVER = "discover/movie"
+    const val BASE_SEARCH = "search/movie"
+    const val BASE_QUERY = "&query="
     const val SORT_BY_POPULAR = "&sort_by=popularity.desc"
     const val WITH_GENRES = "&with_genres="
     const val WITH_CAST = "&with_cast="

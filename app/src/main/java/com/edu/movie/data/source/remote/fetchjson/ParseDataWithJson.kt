@@ -77,6 +77,12 @@ class ParseDataWithJson {
                         typeModel
                     )
                 }
+                TypeModel.SEARCH_RESULT -> {
+                    parseJsonToList(
+                        JSONObject(jsonString).getJSONArray(MovieEntry.LIST_MOVIE),
+                        typeModel
+                    )
+                }
             }
         } catch (e: Exception) {
             e.printStackTrace()
@@ -110,6 +116,9 @@ class ParseDataWithJson {
             }
             TypeModel.GENRES -> {
                 parseJsonToModel.parseJsonToGenres(jsonObject)
+            }
+            TypeModel.SEARCH_RESULT -> {
+                parseJsonToModel.parseJsonToMovieForSearch(jsonObject)
             }
         }
     }

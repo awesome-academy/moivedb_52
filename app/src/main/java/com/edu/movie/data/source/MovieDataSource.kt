@@ -35,5 +35,11 @@ interface MovieDataSource {
         fun <T> getMoviesByCast(idCast: Int, page: Int, listener: OnFetchDataJsonListener<T>)
 
         fun <T> getMoviesByCompany(idCompany: Int, page: Int, listener: OnFetchDataJsonListener<T>)
+
+        fun <T> getMoviesSearch(
+            content: String,
+            page: Int,
+            listener: OnFetchDataJsonListener<T>
+        )
     }
 }
